@@ -4,7 +4,7 @@ class BorderedImage extends StatelessWidget {
   const BorderedImage({
     super.key,
     required this.image,
-    this.size = 180,
+    this.size = 80,
     this.borderWidth = 2,
     this.borderColor = const Color(0xFFB39DDB), // 淡紫
     this.borderRadius = 12,
