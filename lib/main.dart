@@ -1,7 +1,9 @@
-import 'pages/layout_page.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'pages/layout_page.dart';
+import 'pages/counter_page.dart';
+import 'models/counter_model.dart';
 
 void main() {
   //這個檔案只會告知 Flutter 執行 MyApp 中定義的程式
@@ -18,9 +20,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter App',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepOrange),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         ),
-        home: const LayoutPage(),
+        home: const LayoutPage(), //換這
       ),
     );
   }
