@@ -1,8 +1,7 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'pages/layout_page.dart';
-import 'pages/counter_page.dart';
+import 'pages/home_page.dart';
 import 'models/counter_model.dart';
 
 void main() {
@@ -15,14 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => MyAppState()),
+        ChangeNotifierProvider(create: (context) => CounterModel()),
+      ],
       child: MaterialApp(
         title: 'Flutter App',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),
         ),
-        home: const LayoutPage(), //換這
+        home: const HomePage(),
       ),
     );
   }
