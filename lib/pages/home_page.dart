@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/demo_item.dart';
 import 'layout_page.dart';
 import 'counter_page.dart';
+import 'button_demo_page.dart';
 import 'forms_demo_page.dart';
 import 'lists_demo_page.dart';
 import 'navigation_demo_page.dart';
@@ -22,6 +23,7 @@ class HomePage extends StatelessWidget {
         children: [
           _buildCategory(context, '基礎佈局', _getLayoutDemos()),
           _buildCategory(context, '狀態管理', _getStateDemos()),
+          _buildCategory(context, '按鈕元件', _getButtonDemos()),
           _buildCategory(context, '表單元件', _getFormDemos()),
           _buildCategory(context, '列表元件', _getListDemos()),
           _buildCategory(context, '導航元件', _getNavigationDemos()),
@@ -84,6 +86,16 @@ class HomePage extends StatelessWidget {
       subtitle: 'Provider 狀態管理示範',
       page: CounterPage(),
       icon: Icons.add_circle_outline,
+    ),
+  ];
+
+  // 按鈕元件示範項目
+  List<DemoItem> _getButtonDemos() => [
+    const DemoItem(
+      title: '按鈕樣式練習',
+      subtitle: 'ElevatedButton, TextButton, OutlinedButton, IconButton',
+      page: ButtonDemoPage(),
+      icon: Icons.smart_button,
     ),
   ];
 
