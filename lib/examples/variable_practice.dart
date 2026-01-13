@@ -1,9 +1,7 @@
 // lib/examples/variable_practice.dart
 // 這個文件用於練習 Dart 變數的宣告和使用
 // 運行方式: dart lib/examples/variable_practice.dart
-
 import 'package:flutter/foundation.dart';
-
 
 void main() {
   debugPrint('===================================');
@@ -27,7 +25,7 @@ void main() {
 
 // 1. 基本數值類型 (int, double)
 void basicTypes() {
-  print('\n=== 1. 基本數值類型 ===');
+  debugPrint('\n=== 1. 基本數值類型 ===');
 
   // 整數 (int) - 用於存儲整數值
   int age = 25;
