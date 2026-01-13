@@ -179,7 +179,7 @@ void collections() {
   debugPrint('所有人名: ${ages.keys.toList()}');
 
   // Set（集合）- 無序且唯一的集合
-  Set<String> uniqueNames = {"Flutter", "Dart", "Flutter"}; // 重複的會被移除
+  Set<String> uniqueNames = {"Flutter", "Dart"}; // 重複的會被移除
 
   debugPrint('\n唯一名稱集合: $uniqueNames');
   debugPrint('集合大小: ${uniqueNames.length}');
@@ -193,7 +193,6 @@ void practicalOperations() {
   // 型別檢查
   var value = 42;
   debugPrint('value = $value');
-  debugPrint('是否為 int: ${value is int}');
   debugPrint('是否為 String: ${value is String}');
 
   // 型別轉換

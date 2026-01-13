@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'pages/home_page.dart';
 import 'models/counter_model.dart';
-import 'examples/variable_practice.dart';
 
 void main() {
   //這個檔案只會告知 Flutter 執行 MyApp 中定義的程式
