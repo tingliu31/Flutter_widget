@@ -7,6 +7,7 @@ import 'forms_demo_page.dart';
 import 'lists_demo_page.dart';
 import 'navigation_demo_page.dart';
 import 'animation_demo_page.dart';
+import 'counter_cubit_page.dart';
 
 // 主導航頁面
 // 顯示所有 Widget 示範的分類選單
@@ -81,10 +82,10 @@ class HomePage extends StatelessWidget {
 
   // 狀態管理示範項目
   List<DemoItem> _getStateDemos() => [
-    const DemoItem(
+    DemoItem(
       title: 'ChangeNotifier 練習',
       subtitle: 'Provider 狀態管理示範',
-      page: CounterPage(),
+      page: CounterCubitPage(), //CounterWithValueNotifierPage(), //CounterApp(),
       icon: Icons.add_circle_outline,
     ),
   ];
