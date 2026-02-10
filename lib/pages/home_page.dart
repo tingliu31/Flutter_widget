@@ -7,6 +7,7 @@ import 'lists_demo_page.dart';
 import 'navigation_demo_page.dart';
 import 'animation_demo_page.dart';
 import '../examples/bloc/counter_bloc_page.dart';
+import '../examples/cubit/counter_cubit_page.dart';
 import '../examples/riverpod/counter_riverpod_widget.dart';
 import '../examples/riverpod/riverpod_refresh_widget.dart';
 import '../examples/riverpod/riverpod_listen_widget.dart';
@@ -88,12 +89,12 @@ class HomePage extends StatelessWidget {
 
   // 狀態管理示範項目
   List<DemoItem> _getStateDemos() => [
-    // const DemoItem(
-    //   title: 'Cubit 練習',
-    //   subtitle: 'Bloc 狀態管理示範',
-    //   page: CounterCubitPage(),
-    //   icon: Icons.add_circle_outline,
-    // ),
+    const DemoItem(
+      title: 'Cubit 練習',
+      subtitle: 'Bloc 狀態管理示範',
+      page: CounterCubitPage(),
+      icon: Icons.add_circle_outline,
+    ),
     const DemoItem(
       title: 'Bloc 練習',
       subtitle: 'Bloc 狀態管理示範',

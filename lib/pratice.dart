@@ -1,15 +1,15 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 // 1. 定義一個簡單的函式
 String greet(String name) {
-  print('$name!');
+  debugPrint('$name!');
   return 'Hello, $name!';
 }
 
 // 定義一個接受函式作為參數的函式
 void executeOperation(int a, int b, int Function(int, int) operation) {
   var result = operation(a, b);
-  print('結果: $result');
+  debugPrint('結果: $result');
 }
 
 // 定義不同的運算函式
@@ -25,7 +25,7 @@ class Box<T> {
   T getValue() => value;
 
   void printValue() {
-    print('Box 裡面的值: $value');
+    debugPrint('Box 裡面的值: $value');
   }
 }
 
@@ -33,13 +33,11 @@ enum Color { red, green, blue, yellow }
 
 // 使用範例
 void main() {
-  final VoidCallback onPressed;
-
   // 2. 將函式賦值給變數
   var greeting = greet;
 
   // 3. 透過變數呼叫函式
-  print(greeting('Ting')); // 輸出: Hello, Ting!
+  debugPrint(greeting('Ting')); // 輸出: Hello, Ting!
 
   executeOperation(5, 3, add); // 輸出: 結果: 8
   executeOperation(5, 3, multiply); // 輸出: 結果: 15
@@ -48,41 +46,42 @@ void main() {
   var intBox = Box<int>(42);
   var listBox = Box<List<int>>([1, 2, 3]);
 
-  print(stringBox.getValue()); // Hello
-  print(intBox.getValue()); // 42
-  print(listBox.getValue()); // [1, 2, 3]
+  debugPrint(stringBox.getValue()); // Hello
+  debugPrint('${intBox.getValue()}'); // 42
+  debugPrint('${listBox.getValue()}'); // [1, 2, 3]
 
   // 建立一個 Record（使用小括號）
   var person = ('Ting', age: 28);
 
   // 存取元素（從 $1 開始，不是從 0）
-  print(person.$1); // Ting
-  print(person.age); //28
+  debugPrint(person.$1); // Ting
+  debugPrint('${person.age}'); //28
 
   // 型別是 (String, int)
-  print(person.runtimeType); // (String, int)
+  debugPrint('${person.runtimeType}'); // (String, int)
 
   (String, {int age}) typedPerson = ('Alice', age: 25);
+  debugPrint('$typedPerson'); // (Alice, age: 25)
 
   // 基礎解構：從陣列中提取數據
   var numbers = [1, 2, 3];
   var [first, second, third] = numbers;
-  print('第一個數字是 $second'); // 輸出：第一個數字是 1
+  debugPrint('第一個數字是 $second'); // 輸出：第一個數字是 1
 
   var colors = ['red', 'green', 'blue'];
   // 只取需要的元素
   var [firstColor, ...others] = colors;
-  print(firstColor); // red
-  print(others); // [green, blue]
+  debugPrint(firstColor); // red
+  debugPrint('$others'); // [green, blue]
 
   // 跳過某些元素
   var [_, _, lastColor] = colors;
-  print(lastColor); // blue
+  debugPrint(lastColor); // blue
 
   // 對象解構：從 Map 中提取數據
   var people = {'name': '小明', 'age': 25};
   var {'name': name, 'age': age} = people;
-  print('$name 今年 $age 歲'); // 輸出：小明 今年 25 歲
+  debugPrint('$name 今年 $age 歲'); // 輸出：小明 今年 25 歲
 
   // 複雜結構解構
   var data = {
@@ -91,27 +90,28 @@ void main() {
     },
   };
   var {'user': {'profile': {'name': userName}}} = data;
-  print('用戶名：$userName'); // 輸出：用戶名：小華
+  debugPrint('用戶名：$userName'); // 輸出：用戶名：小華
 
   var numberLiat = [1, 2, 3, 4, 5];
   var evenNumbers = [
     for (var n in numberLiat)
       if (n.isEven) n,
   ];
+  debugPrint('$evenNumbers'); // [2, 4]
 
   // 從 List 解構
   var [a, b] = [1, 2];
-  print('a = $a'); // a = 1
-  print('b = $b'); // b = 2
+  debugPrint('a = $a'); // a = 1
+  debugPrint('b = $b'); // b = 2
 
   // 從 Record 解構
   var (x, y) = (10, 20);
-  print('x = $x'); // x = 10
-  print('y = $y'); // y = 20
+  debugPrint('x = $x'); // x = 10
+  debugPrint('y = $y'); // y = 20
 
   // 字串解構
   var [firstText, secondText] = ['Hello', 'World'];
-  print('$first $second'); // Hello World
+  debugPrint('$firstText $secondText'); // Hello World
 
   var names = ['alice', 'bob', 'charlie', 'david'];
 
@@ -120,15 +120,16 @@ void main() {
     for (var name in names)
       if (name.length > 4) name.toUpperCase(),
   ];
+  debugPrint('$longNames'); // [ALICE, CHARLIE, DAVID]
 
   var favoriteColor = Color.red;
 
-  print(favoriteColor); // Color.red
-  print(favoriteColor.name); // red
-  print(favoriteColor.index); // 0 (索引從 0 開始)
+  debugPrint('$favoriteColor'); // Color.red
+  debugPrint(favoriteColor.name); // red
+  debugPrint('${favoriteColor.index}'); // 0 (索引從 0 開始)
 
   // 列出所有值
-  print(Color.values); // [Color.red, Color.green, Color.blue, Color.yellow]
+  debugPrint('${Color.values}'); // [Color.red, Color.green, Color.blue, Color.yellow]
 
 
 }
@@ -159,19 +160,19 @@ String describePoint((int, int) point) {
 void handleResponse(Map<String, dynamic> response) {
   switch (response) {
     case {'status': 'success', 'data': var data}:
-      print('成功: $data');
+      debugPrint('成功: $data');
 
     case {'status': 'error', 'code': 404}:
-      print('錯誤: 找不到資源');
+      debugPrint('錯誤: 找不到資源');
 
     case {'status': 'error', 'code': var code, 'message': var msg}:
-      print('錯誤 $code: $msg');
+      debugPrint('錯誤 $code: $msg');
 
     case {'status': 'loading'}:
-      print('載入中...');
+      debugPrint('載入中...');
 
     default:
-      print('未知的回應格式');
+      debugPrint('未知的回應格式');
   }
 }
 
@@ -199,19 +200,19 @@ String describeUser(User user) {
 void processData(dynamic data) {
   // 條件檢查與解構
   if (data case {'status': 'success', 'user': var user}) {
-    print('成功取得使用者: $user');
+    debugPrint('成功取得使用者: $user');
   } else if (data case {'status': 'error', 'message': var msg}) {
-    print('錯誤: $msg');
+    debugPrint('錯誤: $msg');
   } else {
-    print('未知格式');
+    debugPrint('未知格式');
   }
 }
 
 void checkAge(int age) {
   if (age case var a when a >= 18) {
-    print('$a 歲，已成年');
+    debugPrint('$a 歲，已成年');
   } else {
-    print('$age 歲，未成年');
+    debugPrint('$age 歲，未成年');
   }
 }
 
@@ -311,7 +312,7 @@ mixin Moveable {
   void move(int deltaX, int deltaY) {
     x += deltaX;
     y += deltaY;
-    print('移動到位置: ($x, $y)');
+    debugPrint('移動到位置: ($x, $y)');
   }
 }
 
