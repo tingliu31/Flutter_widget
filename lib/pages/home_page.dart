@@ -7,6 +7,11 @@ import 'forms_demo_page.dart';
 import 'lists_demo_page.dart';
 import 'navigation_demo_page.dart';
 import 'animation_demo_page.dart';
+import '../examples/cubit/counter_cubit_page.dart';
+import '../examples/bloc/counter_bloc_page.dart';
+import '../examples/riverpod/counter_riverpod_widget.dart';
+import '../examples/riverpod/riverpod_refresh_widget.dart';
+import '../examples/riverpod/riverpod_listen_widget.dart';
 
 // 主導航頁面
 // 顯示所有 Widget 示範的分類選單
@@ -85,6 +90,42 @@ class HomePage extends StatelessWidget {
       title: 'ChangeNotifier 練習',
       subtitle: 'Provider 狀態管理示範',
       page: CounterPage(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Cubit 練習',
+      subtitle: 'Bloc 狀態管理示範',
+      page: CounterCubitPage(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Bloc 練習',
+      subtitle: 'Bloc 狀態管理示範',
+      page: CounterBlocPage(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 練習',
+      subtitle: 'Riverpod 狀態管理示範',
+      page: CounterRiverpodWidget(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 刷新練習',
+      subtitle: 'Riverpod 刷新示範',
+      page: RiverpodRefreshWidget(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 監聽練習',
+      subtitle: 'Riverpod 監聽示範',
+      page: RiverpodListenWidget(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 最佳實踐練習',
+      subtitle: 'Riverpod 最佳實踐示範',
+      page: BestPracticeExample(),
       icon: Icons.add_circle_outline,
     ),
   ];
