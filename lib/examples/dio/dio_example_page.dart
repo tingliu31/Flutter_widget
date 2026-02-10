@@ -11,10 +11,13 @@ class DioExamplePage extends StatefulWidget {
 }
 
 class _DioExamplePageState extends State<DioExamplePage> {
+
+  /// Dio 實例
   late final Dio _dio;
   String _result = '尚未執行任何請求';
   bool _isLoading = false;
 
+  // 只在 State 建立時執行一次 用於初始化 Dio 實例
   @override
   void initState() {
     super.initState();
@@ -23,6 +26,8 @@ class _DioExamplePageState extends State<DioExamplePage> {
 
   /// 初始化 Dio 實例並設定攔截器
   void _initDio() {
+
+    // 統一設定 baseUrl / timeout / headers
     _dio = Dio(BaseOptions(
       baseUrl: 'https://jsonplaceholder.typicode.com',
       connectTimeout: const Duration(seconds: 10),

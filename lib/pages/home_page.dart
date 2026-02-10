@@ -12,6 +12,7 @@ import '../examples/riverpod/counter_riverpod_widget.dart';
 import '../examples/riverpod/riverpod_refresh_widget.dart';
 import '../examples/riverpod/riverpod_listen_widget.dart';
 import '../examples/dio/dio_example_page.dart';
+import '../examples/dio/dio_interceptors_demo_page.dart';
 
 // 主導航頁面
 // 顯示所有 Widget 示範的分類選單
@@ -135,6 +136,12 @@ class HomePage extends StatelessWidget {
       title: 'Dio 套件練習',
       subtitle: 'GET, POST, PUT, DELETE 等 HTTP 請求',
       page: DioExamplePage(),
+      icon: Icons.cloud,
+    ),
+    const DemoItem(
+      title: 'Dio 攔截器練習',
+      subtitle: 'Dio 攔截器示範',
+      page: DioInterceptorsDemoPage(),
       icon: Icons.cloud,
     ),
   ];

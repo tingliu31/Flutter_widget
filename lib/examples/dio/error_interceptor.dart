@@ -1,9 +1,10 @@
 import 'dart:developer' as dev;
+import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'auth_header_interceptor.dart';
 
 /// 獨立的錯誤攔截器：負責 retry + 統一狀態碼處理
 class ErrorInterceptor extends Interceptor {
-  
   ErrorInterceptor({
     required this.dio,
     this.maxRetries = 2,

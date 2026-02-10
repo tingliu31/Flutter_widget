@@ -1,16 +1,22 @@
 import 'dart:developer' as dev;
 import 'package:dio/dio.dart';
-// import 'package:flutter/foundation.dart';
 import 'dart:async';
-import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 
+void main() async {
+  // await getTodo();
 
-Future<void> main() async {
+  final dio = Dio();
 
-  await getTodo();
-
+  dio.interceptors.add(InterceptorA());
+  dio.interceptors.add(InterceptorB());
+  dio.interceptors.add(InterceptorC());
+  try {
+    // 發送請求
+    await dio.get('jsonplaceholder.typicode.com/posts/1');
+  } catch (e) {
+    print('Error: $e');
+  }
 }
-
 
 Future<void> getTodo() async {
   try {
@@ -32,13 +38,14 @@ Dio createDio({
   String? accessToken,
   String languageCode = 'zh-TW',
 }) {
-
-  final dio = Dio(BaseOptions(
-    baseUrl: baseUrl,
-    connectTimeout: const Duration(seconds: 10),
-    receiveTimeout: const Duration(seconds: 10),
-    headers: {'Accept': 'application/json'},
-  ));
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: baseUrl,
+      connectTimeout: const Duration(seconds: 10),
+      receiveTimeout: const Duration(seconds: 10),
+      headers: {'Accept': 'application/json'},
+    ),
+  );
 
   dio.interceptors.add(
     InterceptorsWrapper(
@@ -99,4 +106,67 @@ Dio createDio({
   );
 
   return dio;
+}
+
+// Interceptor A
+class InterceptorA extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    print('A - onRequest');
+    handler.next(options); // 繼續下一個
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    print('A - onResponse');
+    handler.next(response); // 繼續下一個
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    print('A - onError');
+    handler.next(err); // 繼續下一個
+  }
+}
+
+// Interceptor B
+class InterceptorB extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    print('B - onRequest');
+    handler.next(options);
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    print('B - onResponse');
+    handler.next(response);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    print('B - onError');
+    handler.next(err);
+  }
+}
+
+// Interceptor C
+class InterceptorC extends Interceptor {
+  @override
+  void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
+    print('C - onRequest');
+    handler.next(options);
+  }
+
+  @override
+  void onResponse(Response response, ResponseInterceptorHandler handler) {
+    print('C - onResponse');
+    handler.next(response);
+  }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    print('C - onError');
+    handler.next(err);
+  }
 }
