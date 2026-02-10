@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import '../models/demo_item.dart';
 import 'layout_page.dart';
-import 'counter_page.dart';
 import 'button_demo_page.dart';
 import 'forms_demo_page.dart';
 import 'lists_demo_page.dart';
 import 'navigation_demo_page.dart';
 import 'animation_demo_page.dart';
-import 'counter_cubit_page.dart';
+import '../examples/bloc/counter_bloc_page.dart';
+import '../examples/riverpod/counter_riverpod_widget.dart';
+import '../examples/riverpod/riverpod_refresh_widget.dart';
+import '../examples/riverpod/riverpod_listen_widget.dart';
 
 // 主導航頁面
 // 顯示所有 Widget 示範的分類選單
@@ -17,9 +19,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Widget 學習'),
-      ),
+      appBar: AppBar(title: const Text('Flutter Widget 學習')),
       body: ListView(
         children: [
           _buildCategory(context, '基礎佈局', _getLayoutDemos()),
@@ -35,7 +35,11 @@ class HomePage extends StatelessWidget {
   }
 
   // 建立分類區塊（包含標題和項目列表）
-  Widget _buildCategory(BuildContext context, String title, List<DemoItem> items) {
+  Widget _buildCategory(
+    BuildContext context,
+    String title,
+    List<DemoItem> items,
+  ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -54,18 +58,20 @@ class HomePage extends StatelessWidget {
           ),
         ),
         // 分類項目
-        ...items.map((item) => ListTile(
-          leading: Icon(item.icon),
-          title: Text(item.title),
-          subtitle: Text(item.subtitle),
-          trailing: const Icon(Icons.chevron_right),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => item.page),
-            );
-          },
-        )),
+        ...items.map(
+          (item) => ListTile(
+            leading: Icon(item.icon),
+            title: Text(item.title),
+            subtitle: Text(item.subtitle),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => item.page),
+              );
+            },
+          ),
+        ),
       ],
     );
   }
@@ -82,10 +88,40 @@ class HomePage extends StatelessWidget {
 
   // 狀態管理示範項目
   List<DemoItem> _getStateDemos() => [
-    DemoItem(
-      title: 'ChangeNotifier 練習',
-      subtitle: 'Provider 狀態管理示範',
-      page: CounterCubitPage(), //CounterWithValueNotifierPage(), //CounterApp(),
+    // const DemoItem(
+    //   title: 'Cubit 練習',
+    //   subtitle: 'Bloc 狀態管理示範',
+    //   page: CounterCubitPage(),
+    //   icon: Icons.add_circle_outline,
+    // ),
+    const DemoItem(
+      title: 'Bloc 練習',
+      subtitle: 'Bloc 狀態管理示範',
+      page: CounterBlocPage(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 練習',
+      subtitle: 'Riverpod 狀態管理示範',
+      page: CounterRiverpodWidget(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 刷新練習',
+      subtitle: 'Riverpod 刷新示範',
+      page: RiverpodRefreshWidget(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 監聽練習',
+      subtitle: 'Riverpod 監聽示範',
+      page: RiverpodListenWidget(),
+      icon: Icons.add_circle_outline,
+    ),
+    const DemoItem(
+      title: 'Riverpod 最佳實踐練習',
+      subtitle: 'Riverpod 最佳實踐示範',
+      page: BestPracticeExample(),
       icon: Icons.add_circle_outline,
     ),
   ];
