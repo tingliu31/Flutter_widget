@@ -11,6 +11,7 @@ import '../examples/cubit/counter_cubit_page.dart';
 import '../examples/riverpod/counter_riverpod_widget.dart';
 import '../examples/riverpod/riverpod_refresh_widget.dart';
 import '../examples/riverpod/riverpod_listen_widget.dart';
+import '../examples/dio/dio_example_page.dart';
 
 // 主導航頁面
 // 顯示所有 Widget 示範的分類選單
@@ -25,6 +26,7 @@ class HomePage extends StatelessWidget {
         children: [
           _buildCategory(context, '基礎佈局', _getLayoutDemos()),
           _buildCategory(context, '狀態管理', _getStateDemos()),
+          _buildCategory(context, '網路請求', _getNetworkDemos()),
           _buildCategory(context, '按鈕元件', _getButtonDemos()),
           _buildCategory(context, '表單元件', _getFormDemos()),
           _buildCategory(context, '列表元件', _getListDemos()),
@@ -124,6 +126,16 @@ class HomePage extends StatelessWidget {
       subtitle: 'Riverpod 最佳實踐示範',
       page: BestPracticeExample(),
       icon: Icons.add_circle_outline,
+    ),
+  ];
+
+  // 網路請求示範項目
+  List<DemoItem> _getNetworkDemos() => [
+    const DemoItem(
+      title: 'Dio 套件練習',
+      subtitle: 'GET, POST, PUT, DELETE 等 HTTP 請求',
+      page: DioExamplePage(),
+      icon: Icons.cloud,
     ),
   ];
 

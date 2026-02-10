@@ -50,7 +50,7 @@ void main() {
   debugPrint('user1 == user2: ${user1 == user2}');
 
   var user3 = User.fromJson({'name': 'Bob', 'age': 25});
-
+  debugPrint('User Name: ${user3.name}, Age: ${user3.age}'); //User Name: Bob, Age: 25
 }
 
 
@@ -175,7 +175,7 @@ Future<void> requestWithQueryParams() async {
 
 Future<void> getHttp() async {
   try {
-    final response = await Dio().get('https://api.emample.com/test');
+    final _ = await Dio().get('https://api.emample.com/test');
   } catch (e) {
     debugPrint('Exception: $e');
   }
@@ -185,7 +185,7 @@ Future<void> getHttp() async {
 
 Future<void> dioRequest() async {
   try {
-    final response = await Dio().get('https://jsonplaceholder.typicode.com/posts/1');
+    final _ = await Dio().get('https://jsonplaceholder.typicode.com/posts/1');
   } catch (e) {
     debugPrint('Exception: $e');
   }
