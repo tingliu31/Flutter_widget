@@ -22,7 +22,9 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get name => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
+  int get age =>
+      throw _privateConstructorUsedError; //@JsonKey 讓你可以在 Dart 程式碼中使用符合慣例的駝峰式命名，同時正確對應到後端 API 的蛇形命名。
+  //不需要手動轉換命名格式
   @JsonKey(name: 'is_vip')
   bool get isVip => throw _privateConstructorUsedError;
 
@@ -136,6 +138,8 @@ class _$UserImpl implements _User {
   final String name;
   @override
   final int age;
+  //@JsonKey 讓你可以在 Dart 程式碼中使用符合慣例的駝峰式命名，同時正確對應到後端 API 的蛇形命名。
+  //不需要手動轉換命名格式
   @override
   @JsonKey(name: 'is_vip')
   final bool isVip;
@@ -185,7 +189,8 @@ abstract class _User implements User {
   @override
   String get name;
   @override
-  int get age;
+  int get age; //@JsonKey 讓你可以在 Dart 程式碼中使用符合慣例的駝峰式命名，同時正確對應到後端 API 的蛇形命名。
+  //不需要手動轉換命名格式
   @override
   @JsonKey(name: 'is_vip')
   bool get isVip;
